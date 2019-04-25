@@ -5,18 +5,19 @@ import * as admin from 'firebase-admin'
  * This function is called by the mobile devices. It is provided with a token (`idToken`).
  * That token is then validated against the firebase server and if valid a custom token will be generated.
  * 
- * @param `idToken` - The identity token of the user.
  * @returns A JSON object with the key `token` if success  or `message` if failed.
  */
-export const generateToken = functions.https.onRequest(async (req,res)=> {
-    var token = req.body.idToken
+export const generateToken = functions.https.onCall(async (data,context)=> {
+    if (!context.auth) {
+        // Throwing an HttpsError so that the client gets the error details.
+        throw new functions.https.HttpsError('failed-precondition', 'The function must be called ' +
+            'while authenticated.');
+    }
+    const uid = context.auth.uid;
     try {
-        var decodedToken = await admin.auth().verifyIdToken(token)
-        var customToken = await admin.auth().createCustomToken(decodedToken.uid)
-        res.statusCode  = 200
-        res.send({"token" : customToken})
+        var customToken = await admin.auth().createCustomToken(uid);
+        return {"token" : customToken}
     }catch (err) {
-        res.statusCode = 400
-        res.send({"message": "something went wrong."})
+        return {"message": "something went wrong."}
     }
 })
