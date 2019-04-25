@@ -1,14 +1,13 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin'
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
-
+/**
+ * This function is called by the mobile devices. It is provided with a token (`idToken`).
+ * That token is then validated against the firebase server and if valid a custom token will be generated.
+ * 
+ * @param `idToken` - The identity token of the user.
+ * @returns A JSON object with the key `token` if success  or `message` if failed.
+ */
 export const generateToken = functions.https.onRequest(async (req,res)=> {
     var token = req.body.idToken
     try {
