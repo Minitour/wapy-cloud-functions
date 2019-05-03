@@ -2,7 +2,7 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin'
 
 /**
- * This function is called by the mobile devices. It is provided with a token (`idToken`).
+ * This function is called by the mobile devices.
  * That token is then validated against the firebase server and if valid a custom token will be generated.
  * 
  * @returns A JSON object with the key `token` if success  or `message` if failed.
