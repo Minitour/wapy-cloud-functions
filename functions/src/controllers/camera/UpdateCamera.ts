@@ -23,15 +23,16 @@ const UpdateCamera = functions.https.onCall(async (data,context)=> {
         const ref = db.collection('cameras').doc(cameraId);
         const doc: DocumentSnapshot = await ref.get();
         if (doc.exists) {
-            const data = <DocumentData> doc.data();
-            const owner_uid = data.owner_uid;
+            const docData = <DocumentData> doc.data();
+            const owner_uid = docData.owner_uid;
 
             if (owner_uid !== uid) {
                 // error. Object belongs to another user.
                 return { status: 403, message: "The requested resource does not belong to this account." }
             }
 
-            ref.update({mmo: mapModelObject})
+            await ref.update({mmo: mapModelObject})
+            return { status: 200, message: "Success." }
             
         } else {
             // return error

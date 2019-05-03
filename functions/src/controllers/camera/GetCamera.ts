@@ -21,8 +21,8 @@ const GetCamera = functions.https.onCall(async (data,context)=> {
     try {
         const doc: DocumentSnapshot = await db.collection('cameras').doc(cameraId).get();
         if (doc.exists) {
-            const data = <DocumentData> doc.data();
-            const owner_uid = data.owner_uid;
+            const docData = <DocumentData> doc.data();
+            const owner_uid = docData.owner_uid;
 
             if (owner_uid !== uid) {
                 // error. Object belongs to another user.
@@ -30,7 +30,7 @@ const GetCamera = functions.https.onCall(async (data,context)=> {
             }
 
             // return data
-            return { status: 200, message: "Success.", data: data }
+            return { status: 200, message: "Success.", data: docData }
         } else {
             // return error
             return { status: 404, message: "The requested resource does not exist." }

@@ -32,7 +32,7 @@ const CreateCamera = functions.https.onCall(async (data,context)=> {
     }
 
     try {
-        var docRef: DocumentReference = await db.collection('cameras').add(storedData);
+        const docRef: DocumentReference = await db.collection('cameras').add(storedData);
         console.log(`Created Camera ${docRef.id}`)
         return { status: 200, message: "Success", generatedId: docRef.id }
     }catch {
