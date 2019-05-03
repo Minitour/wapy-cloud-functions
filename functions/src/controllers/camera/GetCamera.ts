@@ -25,7 +25,7 @@ const GetCamera = functions.https.onCall(async (data,context)=> {
         const doc: DocumentSnapshot = await db.collection('cameras').doc(cameraId).get();
         if (doc.exists) {
             const docData = <any> doc.data();
-            console.log(`data found ${docData}`);
+            console.log(`data found ${JSON.stringify(docData)}`);
             const owner_uid = docData.owner_uid;
 
             if (owner_uid !== uid) {
