@@ -1,12 +1,14 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin'
 import { DocumentSnapshot } from 'firebase-functions/lib/providers/firestore';
-import { DocumentData } from '@google-cloud/firestore';
 
 /**
  * 
  */
 const GetCamera = functions.https.onCall(async (data,context)=> {
+
+    // { "cameraID" : "34234234234"}
+
     if (!context.auth) {
         // Throwing an HttpsError so that the client gets the error details.
         throw new functions.https.HttpsError('failed-precondition', 'The function must be called ' +
@@ -19,9 +21,11 @@ const GetCamera = functions.https.onCall(async (data,context)=> {
     // select * from firestore.cameras where _id = cameraId and owner_uid = uid
     
     try {
+        console.log(`Fetching document with id ${cameraId}`)
         const doc: DocumentSnapshot = await db.collection('cameras').doc(cameraId).get();
         if (doc.exists) {
-            const docData = <DocumentData> doc.data();
+            const docData = <any> doc.data();
+            console.log(`data found ${docData}`);
             const owner_uid = docData.owner_uid;
 
             if (owner_uid !== uid) {
