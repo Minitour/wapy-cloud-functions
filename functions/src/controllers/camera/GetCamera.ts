@@ -33,6 +33,7 @@ const GetCamera = functions.https.onCall(async (data,context)=> {
                 return { status: 403, message: "The requested resource does not belong to this account." }
             }
 
+            // add data property
             docData.id = cameraId;
             // return data
             return { status: 200, message: "Success.", data: docData }
