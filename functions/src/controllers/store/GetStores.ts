@@ -19,7 +19,7 @@ const GetStores = functions.https.onCall(async (data, context) => {
     // select * from firestore.cameras where _id = cameraId and owner_uid = uid
 
     try {
-        const snapshot = await db.collection('store').where('owner_uid', '==', uid).get()
+        const snapshot = await db.collection('stores').where('owner_uid', '==', uid).get()
         const stores = Array();
         snapshot.docs.forEach(doc => {
             const elements = doc.data()
