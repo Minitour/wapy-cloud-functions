@@ -8,6 +8,10 @@ import CreateCamera from './controllers/camera/CreateCamera';
 import UpdateCamera from './controllers/camera/UpdateCamera';
 import GetStores from './controllers/store/GetStores';
 import CreateStore from './controllers/store/CreateStore';
+import CreateProduct from './controllers/product/CreateProduct';
+import * as cors from 'cors';
+cors({ origin: true });
+
 
 // Account 
 export const generateToken = GenerateToken;
@@ -21,3 +25,6 @@ export const updateCamera = UpdateCamera;
 // Store
 export const getStores = GetStores;
 export const createStore = CreateStore;
+
+// product
+export const createProduct = CreateProduct;
