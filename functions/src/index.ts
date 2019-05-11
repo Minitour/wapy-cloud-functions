@@ -9,9 +9,9 @@ import UpdateCamera from './controllers/camera/UpdateCamera';
 import GetStores from './controllers/store/GetStores';
 import CreateStore from './controllers/store/CreateStore';
 import CreateProduct from './controllers/product/CreateProduct';
+import GetProducts from './controllers/product/GetProducts';
 import * as cors from 'cors';
 cors({ origin: true });
-
 
 // Account 
 export const generateToken = GenerateToken;
@@ -28,3 +28,4 @@ export const createStore = CreateStore;
 
 // product
 export const createProduct = CreateProduct;
+export const getProducts = GetProducts;
