@@ -5,12 +5,11 @@ import { DocumentReference } from '@google-cloud/firestore';
 /**
  * 
  */
-const CreateStore = functions.https.onCall(async (data,context)=> {
+const CreateProduct = functions.https.onCall(async (data,context)=> {
 
     // data contains:
-    // store name
-    // store image
-    // store location?
+    // - storeId
+    // - version
 
     if (!context.auth) {
         // Throwing an HttpsError so that the client gets the error details.
@@ -23,17 +22,18 @@ const CreateStore = functions.https.onCall(async (data,context)=> {
 
     const storedData: any = {
         owner_uid: uid,
-        image: data.image,
+        created_at: admin.firestore.Timestamp.fromDate(new Date()),
+        image : data.image,
         name: data.name
     }
 
     try {
-        const docRef: DocumentReference = await db.collection('stores').add(storedData);
-        console.log(`Created Camera ${docRef.id}`)
+        const docRef: DocumentReference = await db.collection('products').add(storedData);
+        console.log(`Created product ${docRef.id}`)
         return { status: 200, message: "Success", generatedId: docRef.id }
     }catch {
         return { status: 400, message: "Unknown error." }
     }
 })
 
-export default CreateStore;
+export default CreateProduct;
