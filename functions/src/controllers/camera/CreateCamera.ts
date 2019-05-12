@@ -24,7 +24,9 @@ const CreateCamera = functions.https.onCall(async (data,context)=> {
         owner_uid: uid,
         version: data.version,
         mmo : data.mmo,
-        name: data.name
+        name: data.name,
+        image: data.image,
+        heatmap: data.heatmap
     }
 
     // add store reference if exists
