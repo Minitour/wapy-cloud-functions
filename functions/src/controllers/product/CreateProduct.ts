@@ -24,7 +24,8 @@ const CreateProduct = functions.https.onCall(async (data,context)=> {
         owner_uid: uid,
         created_at: admin.firestore.Timestamp.fromDate(new Date()),
         image : data.image,
-        name: data.name
+        name: data.name,
+        description: data.description
     }
 
     try {
