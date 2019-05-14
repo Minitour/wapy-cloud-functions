@@ -24,7 +24,8 @@ const CreateStore = functions.https.onCall(async (data,context)=> {
     const storedData: any = {
         owner_uid: uid,
         image: data.image,
-        name: data.name
+        name: data.name,
+        address: data.address
     }
 
     try {
