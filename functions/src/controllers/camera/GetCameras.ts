@@ -4,7 +4,7 @@ import * as admin from 'firebase-admin';
 /**
  * 
  */
-const GetCamera = functions.https.onCall(async (data,context)=> {
+const GetCameras = functions.https.onCall(async (data,context)=> {
 
     // { "cameraID" : "34234234234"}
 
@@ -55,4 +55,4 @@ const GetCamera = functions.https.onCall(async (data,context)=> {
     
 })
 
-export default GetCamera;
+export default GetCameras;
