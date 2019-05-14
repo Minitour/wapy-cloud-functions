@@ -4,6 +4,7 @@ admin.initializeApp();
 import GenerateToken from './controllers/GenerateToken'
 import UpdateAccount from './controllers/UpdateAccount'
 import GetCamera from './controllers/camera/GetCamera';
+import GetCameras from './controllers/camera/GetCameras';
 import CreateCamera from './controllers/camera/CreateCamera';
 import UpdateCamera from './controllers/camera/UpdateCamera';
 import GetStores from './controllers/store/GetStores';
@@ -19,6 +20,7 @@ export const updateAccount = UpdateAccount;
 
 // Camera 
 export const getCamera = GetCamera;
+export const getCameras = GetCameras;
 export const createCamera = CreateCamera;
 export const updateCamera = UpdateCamera;
 
