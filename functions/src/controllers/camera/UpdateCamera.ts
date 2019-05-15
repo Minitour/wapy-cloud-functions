@@ -15,8 +15,14 @@ const UpdateCamera = functions.https.onCall(async (data,context)=> {
     const uid = context.auth.uid;
     const cameraId = data.cameraId;
     const mapModelObject = data.mmo;
+    const heatmap = data.heatmap;
+    const image = data.image;
+    var store = undefined;
     const db = admin.firestore();
-
+    
+    if (data.storeId) {
+        store = db.doc(`stores/${data.storeId}`)
+    }
     // select * from firestore.cameras where _id = cameraId and owner_uid = uid
     
     try {
@@ -31,7 +37,7 @@ const UpdateCamera = functions.https.onCall(async (data,context)=> {
                 return { status: 403, message: "The requested resource does not belong to this account." }
             }
 
-            await ref.update({mmo: mapModelObject})
+            await ref.update({mmo: mapModelObject, heatmap: heatmap,image: image, store: store})
             return { status: 200, message: "Success." }
             
         } else {
