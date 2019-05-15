@@ -1,7 +1,7 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin'
 import { DocumentReference } from '@google-cloud/firestore';
-
+import { v4 as uuid } from 'uuid';
 /**
  * 
  */
@@ -26,7 +26,9 @@ const CreateCamera = functions.https.onCall(async (data,context)=> {
         mmo : data.mmo,
         name: data.name,
         image: data.image,
-        heatmap: data.heatmap
+        heatmap: data.heatmap,
+        secret: uuid(),
+        created_at: admin.firestore.Timestamp.fromDate(new Date())
     }
 
     // add store reference if exists
