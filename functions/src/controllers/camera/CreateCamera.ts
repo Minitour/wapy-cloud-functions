@@ -22,13 +22,20 @@ const CreateCamera = functions.https.onCall(async (data,context)=> {
 
     const storedData: any = {
         owner_uid: uid,
-        version: data.version,
         mmo : data.mmo,
-        name: data.name,
-        image: data.image,
-        heatmap: data.heatmap,
         secret: uuid(),
         created_at: admin.firestore.Timestamp.fromDate(new Date())
+    }
+    if (data.name){
+        storedData['name'] = data.name;
+    }
+
+    if (data.version) {
+        storedData['version'] = data.version;
+    }
+
+    if (data.image) {
+        storedData['image'] = data.image;
     }
 
     // add store reference if exists
