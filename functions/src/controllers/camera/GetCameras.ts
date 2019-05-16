@@ -38,7 +38,8 @@ const GetCameras = functions.https.onCall(async (data,context)=> {
                     image: fields.image,
                     mmo: fields.mmo,
                     name: fields.name,
-                    version: fields.version
+                    version: fields.version,
+                    secret: fields.secret
                 })
             });
             // return data
