@@ -1,5 +1,6 @@
 import * as functions from 'firebase-functions';
 import EnvConfig from '../Config';
+import fetch from 'node-fetch';
 
 /**
  * 
