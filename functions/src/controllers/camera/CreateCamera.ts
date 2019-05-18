@@ -1,11 +1,11 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin'
 import { DocumentReference } from '@google-cloud/firestore';
-import { v4 as uuid } from 'uuid';
+import {v4 as uuid} from 'uuid';
 /**
  * 
  */
-const CreateCamera = functions.https.onCall(async (data,context)=> {
+const CreateCamera = functions.https.onCall(async (data, context) => {
 
     // data contains:
     // - storeId
@@ -22,11 +22,11 @@ const CreateCamera = functions.https.onCall(async (data,context)=> {
 
     const storedData: any = {
         owner_uid: uid,
-        mmo : data.mmo,
-        secret: uuid(),
+        mmo: data.mmo,
+        secret: uuid,
         created_at: admin.firestore.Timestamp.fromDate(new Date())
     }
-    if (data.name){
+    if (data.name) {
         storedData['name'] = data.name;
     }
 
@@ -47,7 +47,7 @@ const CreateCamera = functions.https.onCall(async (data,context)=> {
         const docRef: DocumentReference = await db.collection('cameras').add(storedData);
         console.log(`Created Camera ${docRef.id}`)
         return { status: 200, message: "Success", generatedId: docRef.id }
-    }catch(e){
+    } catch (e) {
         console.log(e);
         return { status: 400, message: "Unknown error." }
     }
