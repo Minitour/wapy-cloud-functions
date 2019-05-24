@@ -13,9 +13,9 @@ const GetDashboard = functions.https.onCall(async (data, context) => {
     }
     const uid = context.auth.uid;
 
-    data.owner_id = uid;
-    
-    const resposne = await fetch(`${EnvConfig.protocol}://${EnvConfig.domain}/dashboard`, {
+    data.owner_uid = uid;
+    console.log(`Sending ${JSON.stringify(data)}`);
+    const response = await fetch(`${EnvConfig.protocol}://${EnvConfig.domain}/dashboard`, {
         method: 'post',
         body: JSON.stringify(data),
         headers: {
@@ -23,8 +23,9 @@ const GetDashboard = functions.https.onCall(async (data, context) => {
             'secret': EnvConfig.secretHeaderValue
         },
     }).then(res => res.json());
+    console.log(`Received ${JSON.stringify(response)}`);
 
-    return resposne;
+    return response;
 
 })
 
