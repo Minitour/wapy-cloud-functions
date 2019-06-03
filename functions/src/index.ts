@@ -13,6 +13,8 @@ import CreateProduct from './controllers/product/CreateProduct';
 import GetProducts from './controllers/product/GetProducts';
 import * as cors from 'cors';
 import GetDashboard from './controllers/aws/GetDashboard';
+import GetBoxDashboard from './controllers/aws/GetBoxDashboard';
+import GetProductDashboard from './controllers/aws/GetProductDashboard';
 cors({ origin: true });
 
 // Account 
@@ -35,3 +37,5 @@ export const getProducts = GetProducts;
 
 //AWS
 export const getDashboard = GetDashboard;
+export const getBoxDashboard = GetBoxDashboard;
+export const getProductDashboard = GetProductDashboard;
