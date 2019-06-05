@@ -15,6 +15,7 @@ import * as cors from 'cors';
 import GetDashboard from './controllers/aws/GetDashboard';
 import GetBoxDashboard from './controllers/aws/GetBoxDashboard';
 import GetProductDashboard from './controllers/aws/GetProductDashboard';
+import UpdateCameraStatus from './controllers/camera/UpdateCameraStatus';
 cors({ origin: true });
 
 // Account 
@@ -26,6 +27,7 @@ export const getCamera = GetCamera;
 export const getCameras = GetCameras;
 export const createCamera = CreateCamera;
 export const updateCamera = UpdateCamera;
+export const updateCameraStatus = UpdateCameraStatus;
 
 // Store
 export const getStores = GetStores;
