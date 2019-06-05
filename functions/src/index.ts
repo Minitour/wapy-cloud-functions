@@ -16,6 +16,7 @@ import GetDashboard from './controllers/aws/GetDashboard';
 import GetBoxDashboard from './controllers/aws/GetBoxDashboard';
 import GetProductDashboard from './controllers/aws/GetProductDashboard';
 import UpdateCameraStatus from './controllers/camera/UpdateCameraStatus';
+import CameraUpdateTrigger from './triggers/CameraUpdateTrigger';
 cors({ origin: true });
 
 // Account 
@@ -41,3 +42,6 @@ export const getProducts = GetProducts;
 export const getDashboard = GetDashboard;
 export const getBoxDashboard = GetBoxDashboard;
 export const getProductDashboard = GetProductDashboard;
+
+// firestore triggers
+export const onCameraUpdate = CameraUpdateTrigger;
