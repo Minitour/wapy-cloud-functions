@@ -14,7 +14,7 @@ export default functions.firestore
             return null;
         }
 
-        const compareKeys = ['camera_enabled']
+        const compareKeys = ['camera_enabled','last_ping']
 
 
         var shouldReturn = true;
