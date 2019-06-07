@@ -17,11 +17,13 @@ import GetBoxDashboard from './controllers/aws/GetBoxDashboard';
 import GetProductDashboard from './controllers/aws/GetProductDashboard';
 import UpdateCameraStatus from './controllers/camera/UpdateCameraStatus';
 import CameraUpdateTrigger from './triggers/CameraUpdateTrigger';
+import GetAccountInfo from './controllers/account/GetAccountInfo';
 cors({ origin: true });
 
 // Account 
 export const generateToken = GenerateToken;
 export const updateAccount = UpdateAccount;
+export const getAccountInfo = GetAccountInfo;
 
 // Camera 
 export const getCamera = GetCamera;
