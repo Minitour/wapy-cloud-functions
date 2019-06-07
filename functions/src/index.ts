@@ -19,12 +19,14 @@ import UpdateCameraStatus from './controllers/camera/UpdateCameraStatus';
 import CameraUpdateTrigger from './triggers/CameraUpdateTrigger';
 import GetAccountInfo from './controllers/account/GetAccountInfo';
 import UpdateProduct from './controllers/product/UpdateProduct';
+import DeleteResource from './controllers/account/DeleteResource';
 cors({ origin: true });
 
 // Account 
 export const generateToken = GenerateToken;
 export const updateAccount = UpdateAccount;
 export const getAccountInfo = GetAccountInfo;
+export const deleteResource = DeleteResource;
 
 // Camera 
 export const getCamera = GetCamera;
