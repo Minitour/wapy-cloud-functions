@@ -39,7 +39,7 @@ const UpdateProduct = functions.https.onCall(async (data, context) => {
     }
 
     try {
-        const ref = db.collection('cameras').doc(productId);
+        const ref = db.collection('products').doc(productId);
         const doc: DocumentSnapshot = await ref.get();
         if (doc.exists) {
             const docData = <DocumentData>doc.data();
