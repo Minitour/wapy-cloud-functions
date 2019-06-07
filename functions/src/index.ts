@@ -18,6 +18,7 @@ import GetProductDashboard from './controllers/aws/GetProductDashboard';
 import UpdateCameraStatus from './controllers/camera/UpdateCameraStatus';
 import CameraUpdateTrigger from './triggers/CameraUpdateTrigger';
 import GetAccountInfo from './controllers/account/GetAccountInfo';
+import UpdateProduct from './controllers/product/UpdateProduct';
 cors({ origin: true });
 
 // Account 
@@ -39,7 +40,7 @@ export const createStore = CreateStore;
 // product
 export const createProduct = CreateProduct;
 export const getProducts = GetProducts;
-
+export const updateProduct = UpdateProduct;
 //AWS
 export const getDashboard = GetDashboard;
 export const getBoxDashboard = GetBoxDashboard;
