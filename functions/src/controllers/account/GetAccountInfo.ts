@@ -13,7 +13,7 @@ const GetAccountInfo = functions.https.onCall(async (data,context)=> {
     }
 
     const resdata = (await db.collection('users').doc(context.auth.uid).get()).data();
-    
+    console.log(resdata);
     return { message: 'Success', code: 200, data: resdata }
 })
 
