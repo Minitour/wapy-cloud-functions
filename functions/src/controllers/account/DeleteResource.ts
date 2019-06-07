@@ -24,7 +24,7 @@ const DeleteResource = functions.https.onCall(async (data, context) => {
     const collectionName = data.from;
 
     const updatedData: any = {
-        owner_uid: "unowned"
+        owner_uid: `_${uid}`
     }
 
     try {
