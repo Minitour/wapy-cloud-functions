@@ -1,7 +1,18 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin'
 import { DocumentReference } from '@google-cloud/firestore';
-import {v4 as uuid} from 'uuid';
+
+
+function generate_secret(length: number) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
 /**
  * 
  */
@@ -23,7 +34,7 @@ const CreateCamera = functions.https.onCall(async (data, context) => {
     const storedData: any = {
         owner_uid: uid,
         mmo: data.mmo,
-        secret: uuid,
+        secret: generate_secret(32),
         created_at: admin.firestore.Timestamp.fromDate(new Date())
     }
     if (data.name) {

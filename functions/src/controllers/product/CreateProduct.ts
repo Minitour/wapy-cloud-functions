@@ -32,7 +32,8 @@ const CreateProduct = functions.https.onCall(async (data,context)=> {
         const docRef: DocumentReference = await db.collection('products').add(storedData);
         console.log(`Created product ${docRef.id}`)
         return { status: 200, message: "Success", generatedId: docRef.id }
-    }catch {
+    }catch (e){
+        console.log(e);
         return { status: 400, message: "Unknown error." }
     }
 })
