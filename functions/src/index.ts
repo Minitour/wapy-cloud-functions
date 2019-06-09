@@ -20,6 +20,7 @@ import CameraUpdateTrigger from './triggers/CameraUpdateTrigger';
 import GetAccountInfo from './controllers/account/GetAccountInfo';
 import UpdateProduct from './controllers/product/UpdateProduct';
 import DeleteResource from './controllers/account/DeleteResource';
+import UpdateStore from './controllers/store/UpdateStore';
 cors({ origin: true });
 
 // Account 
@@ -38,6 +39,7 @@ export const updateCameraStatus = UpdateCameraStatus;
 // Store
 export const getStores = GetStores;
 export const createStore = CreateStore;
+export const updateStore = UpdateStore;
 
 // product
 export const createProduct = CreateProduct;
