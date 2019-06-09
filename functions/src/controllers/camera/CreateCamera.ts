@@ -49,6 +49,10 @@ const CreateCamera = functions.https.onCall(async (data, context) => {
         storedData['image'] = data.image;
     }
 
+    if (data.heatmap) {
+        storedData['heatmap'] = data.heatmap;
+    }
+
     // add store reference if exists
     if (data.storeId) {
         storedData.store = db.doc(`stores/${data.storeId}`)
