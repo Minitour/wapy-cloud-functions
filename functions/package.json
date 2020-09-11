@@ -16,7 +16,7 @@
     "cors": "^2.8.5",
     "firebase-admin": "~7.0.0",
     "firebase-functions": "^2.2.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@types/uuid": "^3.4.4",
